@@ -1,0 +1,2 @@
+/*◆--mountオプション（推奨）
+docker container run --mount type=volume, src=name, dst=/hoge sample/image:latest

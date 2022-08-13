@@ -1,0 +1,25 @@
+/*-vオプション（非推奨）
+・匿名ボリューム
+ホスト側には、Linux なら/var/lib/docker/volumes/以下に領域が確保され、
+コンテナ内のディレクトリと共有される。識別のためにハッシュ値が振られる。
+同じネットワークからそのハッシュ値でアクセスできる。
+書式
+docker コンテナ名 run -v /コンテナ内ディレクトリ イメージ名:イメージバージョン
+sample)
+docker container run -v /hoge sample/image:latest
+
+・名前付きボリューム
+匿名ボリュームと同様に、ホスト側には、Linux なら/var/lib/docker/volumes/以下に領域が確保され、
+コンテナ内ディレクトリと共有される。
+nameという名前がついているので、同じネットワーク内から name というホスト名でアクセスできる。
+書式
+docker コンテナ名 run -v ボリューム名:/コンテナ内ディレクトリ イメージ名:イメージバージョン
+sample)
+docker container run -v name:/hoge sample/image:latest
+
+・バインドマウント
+ホスト内ディレクトリと、コンテナ側の/hogeディレクトリが共有される。
+書式
+docker コンテナ名 run -v ホスト内ディレクトリ:/コンテナ内ディレクトリ イメージ名:イメージバージョン
+sample)
+docker container run -v ${PWD}/data:/hoge sample/image:latest
